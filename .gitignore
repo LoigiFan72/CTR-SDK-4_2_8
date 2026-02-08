@@ -1,0 +1,13 @@
+# Visual Studio
+.vs
+.vscode
+out
+
+# Output from CTR SDK
+armmake
+libraries
+build
+
+# Other
+.git
+
