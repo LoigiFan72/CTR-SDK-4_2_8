@@ -1,0 +1,65 @@
+#ifndef	NN_VERSION_H_
+#define	NN_VERSION_H_
+
+#if 0
+#define NN_VERSION_DATE           20121211
+#define NN_VERSION_TIME           0101
+#endif
+#define NN_VERSION_MAJOR          4
+#define NN_VERSION_MINOR          2
+#define NN_VERSION_MICRO          5
+#define NN_VERSION_RELSTEP        200
+#define NN_VERSION_PATCH          "none"
+#define NN_VERSION_REVISION       50249
+#define NN_VERSION_SYSTEM_MAJOR   0
+#define NN_VERSION_SYSTEM_MINOR   17
+#define NN_VERSION_SYSTEM_MICRO   48
+#define NN_VERSION_FIRMWARE_MAJOR 02
+#define NN_VERSION_FIRMWARE_MINOR 35
+#define NN_VERSION_FIRMWARE_MICRO 00
+#define NN_VERSION_RVCT_MAJOR     4
+#define NN_VERSION_RVCT_MINOR     1
+#define NN_VERSION_RVCT_CC_REV    791
+#define NN_VERSION_RVCT_LD_REV    791
+
+#if 0	// for OMakefile
+# NN_VERSION_DATE                 = 20121211
+# NN_VERSION_TIME                 = 0101
+NN_VERSION_MAJOR                = 4
+NN_VERSION_MINOR                = 2
+NN_VERSION_MICRO                = 5
+NN_VERSION_RELSTEP              = 200
+NN_VERSION_PATCH                = "none"
+NN_VERSION_REVISION             = 50249
+NN_VERSION_RVCT_MAJOR           = 4
+NN_VERSION_RVCT_MINOR           = 1
+NN_VERSION_RVCT_CC_REV          = 791
+NN_VERSION_RVCT_LD_REV          = 791
+#
+# NN_VERSION_REVISION/SYSTEM/FIRMWARE is a definition referenced by the system. 
+# Do not access it from the application.
+#
+#endif
+
+#ifndef NN_VERSION_NUMBER
+#define NN_VERSION_NUMBER(major, minor, micro, relstep) (((major) << 24) | ((minor) << 16)  | ((micro) << 8) | (relstep << 0))
+
+#define NN_CURRENT_VERSION_NUMBER NN_VERSION_NUMBER(NN_VERSION_MAJOR, NN_VERSION_MINOR, NN_VERSION_MICRO, NN_VERSION_RELSTEP)
+#endif
+
+#define VER_STR(version) VER_STR_(version)
+#define VER_STR_(version) #version
+
+#ifndef NN_CURRENT_SDK_VERSION
+#define NN_CURRENT_SDK_VERSION "CTR_SDK-"VER_STR(NN_VERSION_MAJOR)"_"VER_STR(NN_VERSION_MINOR)"_"VER_STR(NN_VERSION_MICRO)"_"VER_STR(NN_VERSION_RELSTEP)"_"NN_VERSION_PATCH
+#endif
+
+#ifndef NN_CURRENT_SYSTEM_VERSION
+#define NN_CURRENT_SYSTEM_VERSION "SYSTEM-"VER_STR(NN_VERSION_SYSTEM_MAJOR)"_"VER_STR(NN_VERSION_SYSTEM_MINOR)"_"VER_STR(NN_VERSION_SYSTEM_MICRO)
+#endif
+
+#ifndef NN_CURRENT_FIRMWARE_VERSION
+#define NN_CURRENT_FIRMWARE_VERSION "Firmware-"VER_STR(NN_VERSION_FIRMWARE_MAJOR)"_"VER_STR(NN_VERSION_FIRMWARE_MINOR)"_"VER_STR(NN_VERSION_FIRMWARE_MICRO)
+#endif
+
+#endif // NN_VERSION_H_

@@ -1,0 +1,33 @@
+﻿/*---------------------------------------------------------------------------*
+  Project:  Horizon
+  File:     util_ScopedLockImpl.h
+
+  Copyright (C)2009-2012 Nintendo Co., Ltd.  All rights reserved.
+
+  These coded instructions, statements, and computer programs contain
+  proprietary information of Nintendo of America Inc. and/or Nintendo
+  Company Ltd., and are protected by Federal copyright law.  They may
+  not be disclosed to third parties or copied or duplicated in any form,
+  in whole or in part, without the prior written consent of Nintendo.
+
+  $Rev: 46347 $
+ *---------------------------------------------------------------------------*/
+
+#ifndef NN_UTIL_DETAIL_UTIL_SCOPEDLOCK_H_
+#define NN_UTIL_DETAIL_UTIL_SCOPEDLOCK_H_
+
+#ifdef __cplusplus
+
+#define NN_UTIL_DETAIL_DEFINE_SCOPED_LOCK(typeName, lockCall, unlockCall) \
+    class typeName::ScopedLock \
+    { \
+    private: \
+        typeName& m_Reference; \
+    public: \
+        ScopedLock(typeName& reference) : m_Reference(reference) { m_Reference.lockCall; } \
+        ~ScopedLock() { m_Reference.unlockCall; } \
+    }
+
+#endif // __cplusplus
+
+#endif
